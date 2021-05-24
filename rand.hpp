@@ -16,6 +16,14 @@ class Rand : public Base {
 			ss << setprecision(8) << noshowpoint << val;
 			return ss.str();
 		}
+		
+		virtual int number_of_children() {
+			return 0;
+		}
+
+		virtual Base* get_child(int i) {
+			return nullptr;
+		}
    	 private:
 		double val;
 };

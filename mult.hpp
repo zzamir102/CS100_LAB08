@@ -27,7 +27,25 @@ class Mult : public Base {
 			s = "(" + left + " * " + right + ")";
 			return s; 
 		}
+			
+		virtual int number_of_children() {
+			return 2;	
+		}		
 		
+		virtual Base* get_child(int i) {
+			if (i == 0) {
+				return leftVal;
+			}
+			else if(i == 1) {
+				return rightVal;
+			}
+			else {
+				return nullptr;
+			}
+
+		}
+
+
 	private:
 		Base* leftVal;
 		Base* rightVal; 
