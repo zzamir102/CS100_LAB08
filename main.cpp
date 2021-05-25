@@ -28,5 +28,12 @@ int main() {
 
     cout << sample1.PrintLaTeX(expression) << endl;
 
+    delete three;
+    delete seven;
+    delete four;
+    delete mult;
+    delete add;
+    delete expression;
+
     return 0;
 }

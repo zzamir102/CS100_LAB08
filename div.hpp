@@ -13,10 +13,10 @@ class Div : public Base {
 			leftVal = leftNum;
 		}
 		
-		virtual ~Div() {
-			delete leftVal;
-			delete rightVal;
-		}
+		//virtual ~Div() {
+		//	delete leftVal;
+		//	delete rightVal;
+		//}
 		virtual double evaluate() { 
 			return (leftVal->evaluate() / rightVal->evaluate());
 		}

@@ -12,10 +12,10 @@ class Sub : public Base {
 		leftVal = leftChild;
 		rightVal = rightChild;
 	}
-	virtual ~Sub() {
-			delete leftVal;
-			delete rightVal;
-		}
+	//virtual ~Sub() {
+	//		delete leftVal;
+	//		delete rightVal;
+	//	}
 	virtual double evaluate() {
 		return (leftVal->evaluate() - rightVal->evaluate());
 	}

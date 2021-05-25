@@ -14,10 +14,10 @@ class Add : public Base {
 		rightVal = rightChild;
 	}
 	
-	virtual ~Add () {
-		delete leftVal;
-		delete rightVal;
-	}
+	//virtual ~Add () {
+	//	delete leftVal;
+	//	delete rightVal;
+	//}
 
 	virtual double evaluate() {
 		return (leftVal->evaluate() + rightVal->evaluate());

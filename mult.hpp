@@ -12,10 +12,10 @@ class Mult : public Base {
 			leftVal = leftNum;
 			rightVal = rightNum;
 		}
-		virtual ~Mult() {
-			delete leftVal;
-			delete rightVal;
-		}
+		//virtual ~Mult() {
+		//	delete leftVal;
+		//	delete rightVal;
+		//}
 		virtual double evaluate() { 
 			return (leftVal->evaluate() * rightVal->evaluate());
 		}

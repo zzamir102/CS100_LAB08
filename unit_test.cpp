@@ -44,6 +44,8 @@ TEST(AddTest, AddEvaluateNonZero) {
 	Op* right = new Op(10.0);
 	Add* test = new Add(left, right);
 	EXPECT_EQ(test->evaluate(), 18.5);
+	delete left;
+	delete right;
 	delete test;
 }
 
@@ -52,6 +54,8 @@ TEST(AddTest, AddEvaluateNonDouble) {
 	Op* right = new Op(16);
 	Add* test = new Add(left, right);
 	EXPECT_EQ(test->evaluate(), 25.0);
+	delete left;
+	delete right;
 	delete test;
 }
 
@@ -60,6 +64,8 @@ TEST(AddTest, AddEvaluateNegativeInputs) {
 	Op* right = new Op(16.0);
 	Add* test = new Add(left, right);
 	EXPECT_EQ(test->evaluate(), 7.000000);
+	delete left;
+	delete right;
 	delete test;
 }
 
@@ -68,6 +74,8 @@ TEST(AddTest, AddEvaluateAddZero) {
 	Op* right = new Op(10.0);
 	Add* test = new Add(left, right);
 	EXPECT_EQ(test->evaluate(), 10.0);
+	delete left;
+	delete right;
 	delete test;
 }
 
@@ -76,6 +84,8 @@ TEST(AddTest, AddStringifyNonZero) {
 	Op* right = new Op(16);
 	Add* test = new Add(left, right);
 	EXPECT_EQ(test->stringify(),"(9 + 16)");	
+	delete left;
+	delete right;
 	delete test;
 }
 
@@ -84,6 +94,8 @@ TEST(AddTest, AddgetChildOne) {
 	Op* right = new Op(20);
 	Add* test = new Add(left, right);
 	EXPECT_EQ(test->get_child(0),left);
+	delete left;
+	delete right;
 	delete test;
 }
 
@@ -92,6 +104,8 @@ TEST(AddTest, AddgetChildTwo) {
 	Op* right = new Op(20);
 	Add* test = new Add(left, right);
 	EXPECT_EQ(test->get_child(1),right);
+	delete left;
+	delete right;
 	delete test;
 }
 
@@ -100,6 +114,8 @@ TEST(AddTest, AddgetChildInvalid) {
 	Op* right = new Op(20);
 	Add* test = new Add(left, right);
 	EXPECT_EQ(test->get_child(3),nullptr);
+	delete left;
+	delete right;
 	delete test;
 }
 
@@ -108,6 +124,8 @@ TEST(AddTest, Addgetnumber_of_children) {
 	Op* right = new Op(20);
 	Add* test = new Add(left, right);
 	EXPECT_EQ(test->number_of_children(), 2);
+	delete left;
+	delete right;
 	delete test;
 }
 
@@ -120,6 +138,8 @@ TEST(SubTest, SubEvaluateNonZero) {
 	Op* right = new Op(10.0);
 	Sub* test = new Sub(left, right);
 	EXPECT_EQ(test->evaluate(), -1.5);
+	delete left;
+	delete right;
 	delete test;
 }
 
@@ -128,6 +148,8 @@ TEST(SubTest, SubEvaluateNegative) {
 	Op* right = new Op(-10.2341);
 	Sub* test = new Sub(left, right);
 	EXPECT_EQ(test->evaluate(), -8.2659);
+	delete left;
+	delete right;
 	delete test;
 }
 
@@ -137,6 +159,8 @@ TEST(SubTest, SubEvaluateZero) {
 	Op* right = new Op(12.44287);
 	Sub* test = new Sub(left, right);
 	EXPECT_EQ(test->evaluate(), -12.44287);
+	delete left;
+	delete right;
 	delete test;
 }
 
@@ -147,6 +171,8 @@ TEST(SubTest, SubStringifyNonZero) {
 	Op* right = new Op(10.0);
 	Sub* test = new Sub(left, right);
 	EXPECT_EQ(test->stringify(),"(8.5 - 10)");
+	delete left;
+	delete right;
 	delete test;
 }
 
@@ -155,6 +181,8 @@ TEST(SubTest, SubgetChildOne) {
 	Op* right = new Op(14);
 	Sub* test = new Sub(left, right);
 	EXPECT_EQ(test->get_child(0), left);
+	delete left;
+	delete right;
 	delete test;
 }
 
@@ -163,6 +191,8 @@ TEST(SubTest, SubgetChildTwo) {
 	Op* right = new Op(14);
 	Sub* test = new Sub(left, right);
 	EXPECT_EQ(test->get_child(1), right);
+	delete left;
+	delete right;
 	delete test;
 }
 
@@ -171,6 +201,8 @@ TEST(SubTest, SubgetChildInvalid) {
 	Op* right = new Op(14);
 	Sub* test = new Sub(left, right);
 	EXPECT_EQ(test->get_child(2), nullptr);
+	delete left;
+	delete right;
 	delete test;
 }
 
@@ -179,6 +211,8 @@ TEST(SubTest, Subnumber_of_children) {
 	Op* right = new Op(14);
 	Sub* test = new Sub(left, right);
 	EXPECT_EQ(test->number_of_children(), 2);
+	delete left;
+	delete right;
 	delete test;
 }
 
@@ -192,6 +226,8 @@ TEST(MultTest, MultEvaluateNonzero) {
 	Op* left = new Op(8.0);
 	Mult* test = new Mult(left, right);
 	EXPECT_EQ(test->evaluate(), 48);
+	delete left;
+	delete right;
 	delete test;
 }
 
@@ -200,6 +236,8 @@ TEST(MultTest, MultEvaluateNegative) {
 	Op* left = new Op(-10.0);
 	Mult* test = new Mult(left, right);
 	EXPECT_EQ(test->evaluate(), -50.0);
+	delete left;
+	delete right;
 	delete test;
 }
 
@@ -208,6 +246,8 @@ TEST(MultTest, MultStringifyNonzero) {
 	Op* left = new Op(25.0);
 	Mult* test = new Mult(left, right);
 	EXPECT_EQ(test->stringify(), "(25 * 20)");
+	delete left;
+	delete right;
 	delete test;
 }
 
@@ -216,6 +256,8 @@ TEST(MultTest, MultStringifyNegative) {
 	Op* left = new Op(26.0);
 	Mult* test = new Mult(left, right);
 	EXPECT_EQ(test->stringify(), "(26 * -54)"); 
+	delete left;
+	delete right;
 	delete test;
 }
 
@@ -224,6 +266,8 @@ TEST(MultTest, MultgetChildOne) {
 	Op* left = new Op(34);
 	Mult* test = new Mult(left, right);
 	EXPECT_EQ(test->get_child(0), left);
+	delete left;
+	delete right;
 	delete test;
 }
 
@@ -232,6 +276,8 @@ TEST(MultTest, MultgetChildTwo) {
 	Op* left = new Op(34);
 	Mult* test = new Mult(left, right);
 	EXPECT_EQ(test->get_child(1), right);
+	delete left;
+	delete right;
 	delete test;
 }
 
@@ -240,6 +286,8 @@ TEST(MultTest, MultgetChildInvalid) {
 	Op* left = new Op(34);
 	Mult* test = new Mult(left, right);
 	EXPECT_EQ(test->get_child(5), nullptr);
+	delete left;
+	delete right;
 	delete test;
 }
 
@@ -248,6 +296,8 @@ TEST(MultTest, Multnumber_of_children) {
 	Op* left = new Op(34);
 	Mult* test = new Mult(left, right);
 	EXPECT_EQ(test->number_of_children(), 2);
+	delete left;
+	delete right;
 	delete test;
 }
 
@@ -261,6 +311,8 @@ TEST(DivTest, DivEvaluateNonzero) {
 	Op* left = new Op(8.0);
 	Div* test = new Div(left, right);
 	EXPECT_EQ(test->evaluate(), 2.0);
+	delete left;
+	delete right;
 	delete test;
 }
 
@@ -269,6 +321,8 @@ TEST(DivTest, DivEvaluateNegative) {
 	Op* left = new Op(-19.0);
 	Div* test = new Div(left, right);
 	EXPECT_EQ(test->evaluate(), -1.9);
+	delete left;
+	delete right;
 	delete test;
 }
 
@@ -278,6 +332,8 @@ TEST(DivTest, DivEvaluateTwoNegative) {
 	Op* left = new Op(-50.0);
 	Div* test = new Div(left, right);
 	EXPECT_EQ(test->evaluate(), 2.0); 
+	delete left;
+	delete right;
 	delete test;
 }
 
@@ -286,6 +342,8 @@ TEST(DivTest, DivStringifyNonZero) {
 	Op* left = new Op(5.0);
 	Div* test = new Div(left, right);
 	EXPECT_EQ(test->stringify(), "(5 / 56)"); 
+	delete left;
+	delete right;
 	delete test;
 } 
 
@@ -294,6 +352,8 @@ TEST(DivTest, DivgetChildOne) {
 	Op* left = new Op(3.0);
 	Div* test = new Div(left, right);
 	EXPECT_EQ(test->get_child(0), left);
+	delete left;
+	delete right;
 	delete test;
 }
 
@@ -302,6 +362,8 @@ TEST(DivTest, DivgetChildTwo) {
 	Op* left = new Op(3.0);
 	Div* test = new Div(left, right);
 	EXPECT_EQ(test->get_child(1), right);
+	delete left;
+	delete right;
 	delete test;
 }
 
@@ -310,6 +372,8 @@ TEST(DivTest, Divnumber_of_children) {
 	Op* left = new Op(3.0);
 	Div* test = new Div(left, right);
 	EXPECT_EQ(test->number_of_children(), 2);
+	delete left;
+	delete right;
 	delete test;
 }
 
@@ -322,6 +386,8 @@ TEST(PowTest, PowEvaluateNonZero) {
 	Op* right = new Op(6.0);
 	Pow* test = new Pow(left, right);
 	EXPECT_EQ(test->evaluate(),729.000000);
+	delete left;
+	delete right;
 	delete test;
 } 
 
@@ -330,6 +396,8 @@ TEST(PowTest, PowEvaluateZero) {
 	Op* right = new Op(0.0);
 	Pow* test = new Pow(left, right);
 	EXPECT_EQ(test->evaluate(), 1.0);
+	delete left;
+	delete right;
 	delete test;
 }
 
@@ -338,6 +406,8 @@ TEST(PowTest, PowEvaluateNegative) {
 	Op* right = new Op(-2.0);
 	Pow* test = new Pow(left, right);
 	EXPECT_EQ(test->evaluate(), 0.25);
+	delete left;
+	delete right;
 	delete test;
 }
 
@@ -346,6 +416,8 @@ TEST(PowTest, PowStringifyNonZero) {
 	Op* right = new Op(6.0);
 	Pow* test = new Pow(left, right);
 	EXPECT_EQ(test->stringify(), "(3 ** 6)");
+	delete left;
+	delete right;
 	delete test;
 }
 
@@ -354,6 +426,8 @@ TEST(PowTest, PowgetChildOne) {
 	Op* right = new Op(-4.5);
 	Pow* test = new Pow(left, right);
 	EXPECT_EQ(test->get_child(0), left);
+	delete left;
+	delete right;
 	delete test;
 }
 
@@ -362,6 +436,8 @@ TEST(PowTest, PowgetChildTwo) {
 	Op* right = new Op(-4.5);
 	Pow* test = new Pow(left, right);
 	EXPECT_EQ(test->get_child(1), right);
+	delete left;
+	delete right;
 	delete test;
 }
 
@@ -371,6 +447,8 @@ TEST(PowTest, PowgetChildInvalid) {
 	Op* right = new Op(-4.5);
 	Pow* test = new Pow(left, right);
 	EXPECT_EQ(test->get_child(9), nullptr);
+	delete left;
+	delete right;
 	delete test;
 }
 
@@ -380,6 +458,8 @@ TEST(PowTest, Pownumber_of_children) {
 	Op* right = new Op(-4.5);
 	Pow* test = new Pow(left, right);
 	EXPECT_EQ(test->number_of_children(), 2);
+	delete left;
+	delete right;
 	delete test;
 }
 
@@ -392,6 +472,10 @@ TEST(DoubleOps, MultAddEvaluate) {
 	Op* rightChild = new Op(2.0);
 	Add* test = new Add(leftChildren, rightChild);
 	EXPECT_EQ(test->evaluate(), 12.0);
+	delete left;
+	delete right;
+	delete leftChildren;
+	delete rightChild;
 	delete test;
 }
 
@@ -402,6 +486,10 @@ TEST(DoubleOps, MultAddStringify) {
 	Op* rightChild = new Op(2.0);
 	Add* test = new Add(leftChildren, rightChild);
 	EXPECT_EQ(test->stringify(), "((5 * 2) + 2)");
+	delete left;
+	delete right;
+	delete leftChildren;
+	delete rightChild;
 	delete test;
 }
 
@@ -412,6 +500,10 @@ TEST(DoubleOps, MultAddGetChild) {
 	Op* rightChild = new Op(2.0);
 	Add* test = new Add(leftChildren, rightChild);
 	EXPECT_EQ(test->get_child(0), leftChildren);
+	delete left;
+	delete right;
+	delete leftChildren;
+	delete rightChild;
 	delete test;
 }
 
@@ -422,6 +514,10 @@ TEST(DoubleOps, MultAddNumberofChildren) {
 	Op* rightChild = new Op(2.0);
 	Add* test = new Add(leftChildren, rightChild);
 	EXPECT_EQ(test->number_of_children(), 2);
+	delete left;
+	delete right;
+	delete leftChildren;
+	delete rightChild;
 	delete test;
 }
 

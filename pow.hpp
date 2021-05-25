@@ -13,10 +13,10 @@ class Pow : public Base {
 		leftVal = leftChild;
 		rightVal = rightChild;
 	}		
-	virtual ~Pow() {
-		delete leftVal;
-		delete rightVal;
-	}
+	//virtual ~Pow() {
+	//	delete leftVal;
+	//	delete rightVal;
+	//}
 	virtual double evaluate() {
 		return(pow(leftVal->evaluate(), rightVal->evaluate()));
 	}
