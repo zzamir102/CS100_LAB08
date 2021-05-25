@@ -12,10 +12,10 @@ class Mult : public Base {
 			leftVal = leftNum;
 			rightVal = rightNum;
 		}
-		virtual ~Mult() {
-			delete leftVal;
-			delete rightVal;
-		}
+		//virtual ~Mult() {
+		//	delete leftVal;
+		//	delete rightVal;
+		//}
 		virtual double evaluate() { 
 			return (leftVal->evaluate() * rightVal->evaluate());
 		}
@@ -44,6 +44,18 @@ class Mult : public Base {
 			}
 
 		}
+
+		virtual void accept(Visitor* visitor, int index) {
+			if (index == 0) {
+				visitor->visit_mult_begin(this);
+			}	
+			else if(index == 1) {
+				visitor->visit_mult_middle(this);
+			}
+			else {
+				visitor->visit_mult_end(this);
+			}
+		}		
 
 
 	private:

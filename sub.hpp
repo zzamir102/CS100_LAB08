@@ -12,10 +12,10 @@ class Sub : public Base {
 		leftVal = leftChild;
 		rightVal = rightChild;
 	}
-	virtual ~Sub() {
-			delete leftVal;
-			delete rightVal;
-		}
+	//virtual ~Sub() {
+	//		delete leftVal;
+	//		delete rightVal;
+	//	}
 	virtual double evaluate() {
 		return (leftVal->evaluate() - rightVal->evaluate());
 	}
@@ -42,6 +42,19 @@ class Sub : public Base {
 			return nullptr;
 		}
 	}
+
+	virtual void accept(Visitor* visitor, int index) {
+		if (index == 0) {
+			visitor->visit_sub_begin(this);
+		}
+		else if(index == 1) {
+			visitor->visit_sub_middle(this);
+		}
+		else {
+			visitor->visit_sub_end(this);
+		}
+	}
+
 
    private:
 	Base* leftVal;	

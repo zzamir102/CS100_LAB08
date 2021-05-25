@@ -13,10 +13,10 @@ class Pow : public Base {
 		leftVal = leftChild;
 		rightVal = rightChild;
 	}		
-	virtual ~Pow() {
-		delete leftVal;
-		delete rightVal;
-	}
+	//virtual ~Pow() {
+	//	delete leftVal;
+	//	delete rightVal;
+	//}
 	virtual double evaluate() {
 		return(pow(leftVal->evaluate(), rightVal->evaluate()));
 	}
@@ -42,6 +42,18 @@ class Pow : public Base {
 		}
 		else {
 			return nullptr;
+		}
+	}
+
+	virtual void accept(Visitor* visitor, int index) {
+		if (index == 0) {
+			visitor->visit_pow_begin(this);
+		}
+		else if(index == 1) {
+			visitor->visit_pow_middle(this);
+		}
+		else {
+			visitor->visit_pow_end(this);
 		}
 	}
 
