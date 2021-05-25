@@ -45,6 +45,18 @@ class Pow : public Base {
 		}
 	}
 
+	virtual void accept(Visitor* visitor, int index) {
+		if (index == 0) {
+			visitor->visit_pow_begin(this);
+		}
+		else if(index == 1) {
+			visitor->visit_pow_middle(this);
+		}
+		else {
+			visitor->visit_pow_end(this);
+		}
+	}
+
    private:
 	Base* leftVal;
 	Base* rightVal;

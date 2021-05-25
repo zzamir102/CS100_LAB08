@@ -43,6 +43,19 @@ class Sub : public Base {
 		}
 	}
 
+	virtual void accept(Visitor* visitor, int index) {
+		if (index == 0) {
+			visitor->visit_sub_begin(this);
+		}
+		else if(index == 1) {
+			visitor->visit_sub_middle(this);
+		}
+		else {
+			visitor->visit_sub_end(this);
+		}
+	}
+
+
    private:
 	Base* leftVal;	
 	Base* rightVal;

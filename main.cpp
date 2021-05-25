@@ -1,5 +1,4 @@
 #include <iostream>
-
 #include "base.hpp"
 #include "op.hpp"
 #include "sub.hpp"
@@ -8,6 +7,8 @@
 #include "rand.hpp"
 #include "div.hpp"
 #include "add.hpp"
+#include "visitor.hpp"
+#include "VisitorLatex.hpp"
 
 using namespace std;
 
@@ -18,12 +19,14 @@ int main() {
     Base* three = new Op(3);
     Base* seven = new Op(7);
     Base* four = new Op(4);
-    Base* two = new Op(2);
     Base* mult = new Mult(seven, four);
     Base* add = new Add(three, mult);
-    Base* minus = new Sub(add, two);
 
-    std::cout << minus->stringify() << " = " << minus->evaluate() << std::endl;
-    
+    Base* expression = new Add(mult, add);
+
+    VisitorLaTeX sample1;
+
+    cout << sample1.PrintLaTeX(expression) << endl;
+
     return 0;
 }

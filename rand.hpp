@@ -24,6 +24,11 @@ class Rand : public Base {
 		virtual Base* get_child(int i) {
 			return nullptr;
 		}
+
+		virtual void accept(Visitor* visitor, int index) {
+			visitor->visit_rand(this);
+		}
+	
    	 private:
 		double val;
 };
