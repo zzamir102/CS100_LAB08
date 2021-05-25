@@ -6,6 +6,8 @@
 #include "sub.hpp"
 #include "pow.hpp"
 #include "mult.hpp"
+#include "visitor.hpp"
+#include "VisitorLatex.hpp"
 
 //----------------------------------
 //Optests
@@ -521,6 +523,96 @@ TEST(DoubleOps, MultAddNumberofChildren) {
 	delete test;
 }
 
+//----------------PrintLatex Tests-----------------
+
+TEST(PrintLatex, Add) {
+	Base* three = new Op(3);
+	Base* four = new Op(4);
+	Base* add = new Add(three, four);
+	VisitorLaTeX test;
+	EXPECT_EQ(test.PrintLaTeX(add), "${({3}+{4})}$");
+	delete three;
+	delete four;
+	delete add;
+}
+
+TEST(PrintLatex, Sub) {
+	Base* three = new Op(3);
+	Base* four = new Op(4);
+	Base* sub = new Sub(three, four);
+	VisitorLaTeX test;
+	EXPECT_EQ(test.PrintLaTeX(sub), "${({3}-{4})}$");
+	delete three;
+	delete four;
+	delete sub;
+}
+
+TEST(PrintLatex, Mult) {
+	Base* three = new Op(3);
+	Base* four = new Op(4);
+	Base* mult = new Mult(three, four);
+	VisitorLaTeX test;
+	EXPECT_EQ(test.PrintLaTeX(mult), "${({3}\\cdot{4})}$");
+	delete three;
+	delete four;
+	delete mult;
+}
+
+TEST(PrintLatex, Div) {
+	Base* eight = new Op(8);
+	Base* four = new Op(4);
+	Base* div = new Div(eight, four);
+	VisitorLaTeX test;
+	EXPECT_EQ(test.PrintLaTeX(div), "${\\frac{8}{4}}$");
+	delete eight;
+	delete four;
+	delete div;
+}
+
+TEST(PrintLatex, Pow) {
+	Base* three = new Op(3);
+	Base* four = new Op(4);
+	Base* pow = new Pow(three, four);
+	VisitorLaTeX test;
+	EXPECT_EQ(test.PrintLaTeX(pow), "${({3}^{4})}$");
+	delete three;
+	delete four;
+	delete pow;
+}
+
+TEST(PrintLatex, Mult_Add) {
+	Base* three = new Op(3);
+	Base* seven = new Op(7);
+	Base* four = new Op(4);
+	Base* mult = new Mult(seven, four);
+	Base* add = new Add(three, mult);
+	Base* expression = new Add(mult, add);
+	VisitorLaTeX test;
+	EXPECT_EQ(test.PrintLaTeX(expression),"${({({7}\\cdot{4})}+{({3}+{({7}\\cdot{4})})})}$");
+	delete three;
+	delete seven;
+	delete four;
+	delete mult;
+	delete add;
+	delete expression;
+}
+
+TEST(PrintLatex, Sub_Add) {
+	Base* three = new Op(3);
+	Base* seven = new Op(7);
+	Base* four = new Op(4);
+	Base* sub = new Sub(seven, four);
+	Base* add = new Add(three, sub);
+	Base* expression = new Mult(sub, add);
+	VisitorLaTeX test;
+	EXPECT_EQ(test.PrintLaTeX(expression),"${({({7}-{4})}\\cdot{({3}+{({7}-{4})})})}$");
+	delete three;
+	delete seven;
+	delete four;
+	delete sub;
+	delete add;
+	delete expression;
+}
 
 //-------------------------------------------------
 
